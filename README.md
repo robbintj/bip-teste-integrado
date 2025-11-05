@@ -185,6 +185,18 @@ docker exec -i bip-db psql -U postgres -d bip < db/seed.sql
 
 ### 4️⃣ Iniciar Backend
 
+**Importante:** O projeto requer Java 17 ou superior. Se tiver problemas de compilação, configure o JAVA_HOME:
+
+```bash
+# Configurar Java (ajuste o caminho conforme sua instalação)
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-21.jdk/Contents/Home
+
+# Ou no Windows:
+# set JAVA_HOME=C:\Program Files\Java\jdk-21
+```
+
+Depois execute:
+
 ```bash
 cd backend-module
 mvn clean install -DskipTests
