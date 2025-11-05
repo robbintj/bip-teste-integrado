@@ -546,7 +546,6 @@ Contribuições são bem-vindas! Por favor:
 **Data:** Novembro 2025  
 **Versão:** 1.0.0
 
----
 
 ## 🙏 Agradecimentos
 
@@ -571,4 +570,20 @@ Possíveis melhorias futuras:
 
 ---
 
+----<img width="1219" height="794" alt="Captura de Tela 2025-11-05 às 02 43 23" src="https://github.com/user-attachments/assets/0182b79e-a918-4f9a-92d4-d45c03ef9796" />
+
+<img width="1074" height="679" alt="Captura de Tela 2025-11-05 às 02 44 31" src="https://github.com/user-attachments/assets/37304bac-a090-4192-b80d-d712f3de0630" />
+
+---
+<img width="1219" height="630" alt="Captura de Tela 2025-11-05 às 02 44 44" src="https://github.com/user-attachments/assets/522b97db-9869-4a46-ba8b-c4f3b4b6ef58" />
+
+---
+<img width="1225" height="543" alt="Captura de Tela 2025-11-05 às 02 45 17" src="https://github.com/user-attachments/assets/e40b29ee-5245-4ec9-8c87-0b271ad17881" />
+
+---
+<img width="1218" height="760" alt="Captura de Tela 2025-11-05 às 02 45 37" src="https://github.com/user-attachments/assets/bcb94a4c-30e7-4cf8-b3c0-9a3ecb0231d1" />
+
+---
+
 ** -  Desenvolvido por Robert R Serra - Java Fullstack Developer**
+
