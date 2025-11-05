@@ -1,0 +1,91 @@
+<div class="container mt-4">
+  <div class="row mb-4">
+    <div class="col">
+      <div class="d-flex justify-content-between align-items-center">
+        <h2 class="mb-0">
+          <i class="bi bi-gift me-2"></i>
+          Gerenciamento de Benefícios
+        </h2>
+        <div>
+          <a routerLink="/beneficios/novo" class="btn btn-primary">
+            <i class="bi bi-plus-lg me-2"></i>
+            Novo Benefício
+          </a>
+          <a routerLink="/transferencia" class="btn btn-success ms-2">
+            <i class="bi bi-arrow-left-right me-2"></i>
+            Transferir
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Loading Spinner -->
+  @if (loading()) {
+    <div class="spinner-container">
+      <div class="spinner-border text-primary" role="status">
+        <span class="visually-hidden">Carregando...</span>
+      </div>
+    </div>
+  }
+
+  <!-- Lista de Benefícios -->
+  @if (!loading() && beneficios().length > 0) {
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+      @for (beneficio of beneficios(); track beneficio.id) {
+        <div class="col">
+          <div class="card h-100 fade-in">
+            <div class="card-body">
+              <div class="d-flex justify-content-between align-items-start mb-3">
+                <h5 class="card-title mb-0">{{ beneficio.nome }}</h5>
+                <span [ngClass]="getStatusClass(beneficio.ativo)">
+                  {{ getStatusText(beneficio.ativo) }}
+                </span>
+              </div>
+
+              <p class="card-text text-muted">
+                {{ beneficio.descricao || 'Sem descrição' }}
+              </p>
+
+              <div class="mb-3">
+                <h3 class="text-primary mb-0">
+                  {{ formatCurrency(beneficio.valor) }}
+                </h3>
+                <small class="text-muted">Saldo disponível</small>
+              </div>
+
+              <div class="d-flex gap-2">
+                <a [routerLink]="['/beneficios', beneficio.id, 'editar']"
+                   class="btn btn-sm btn-outline-primary flex-fill">
+                  <i class="bi bi-pencil me-1"></i>
+                  Editar
+                </a>
+                <button (click)="deleteBeneficio(beneficio.id)"
+                        class="btn btn-sm btn-outline-danger flex-fill">
+                  <i class="bi bi-trash me-1"></i>
+                  Excluir
+                </button>
+              </div>
+            </div>
+
+            <div class="card-footer bg-transparent border-top-0">
+              <small class="text-muted">
+                <i class="bi bi-clock me-1"></i>
+                Versão: {{ beneficio.version }}
+              </small>
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  }
+
+  <!-- Lista Vazia -->
+  @if (!loading() && beneficios().length === 0) {
+    <div class="alert alert-info text-center" role="alert">
+      <i class="bi bi-info-circle me-2"></i>
+      Nenhum benefício cadastrado. Clique em "Novo Benefício" para adicionar.
+    </div>
+  }
+</div>
+
