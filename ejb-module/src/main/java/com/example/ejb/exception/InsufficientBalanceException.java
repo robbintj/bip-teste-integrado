@@ -9,11 +9,11 @@ import java.math.BigDecimal;
  */
 @ApplicationException(rollback = true)
 public class InsufficientBalanceException extends RuntimeException {
-
+    
     private final Long beneficioId;
     private final BigDecimal currentBalance;
     private final BigDecimal requiredAmount;
-
+    
     public InsufficientBalanceException(Long beneficioId, BigDecimal currentBalance, BigDecimal requiredAmount) {
         super(String.format(
             "Saldo insuficiente no beneficio ID %d. Saldo atual: R$ %.2f, Valor necessario: R$ %.2f",
@@ -23,15 +23,15 @@ public class InsufficientBalanceException extends RuntimeException {
         this.currentBalance = currentBalance;
         this.requiredAmount = requiredAmount;
     }
-
+    
     public Long getBeneficioId() {
         return beneficioId;
     }
-
+    
     public BigDecimal getCurrentBalance() {
         return currentBalance;
     }
-
+    
     public BigDecimal getRequiredAmount() {
         return requiredAmount;
     }
