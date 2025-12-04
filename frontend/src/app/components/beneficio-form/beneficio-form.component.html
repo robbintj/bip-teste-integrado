@@ -1,0 +1,118 @@
+<div class="container mt-4">
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+      <div class="card shadow-sm">
+        <div class="card-header bg-primary text-white">
+          <h4 class="mb-0">
+            <i class="bi bi-pencil-square me-2"></i>
+            {{ getTitle() }}
+          </h4>
+        </div>
+
+        <div class="card-body">
+          <form [formGroup]="form" (ngSubmit)="onSubmit()">
+            <div class="mb-3">
+              <label for="nome" class="form-label">
+                Nome <span class="text-danger">*</span>
+              </label>
+              <input
+                type="text"
+                class="form-control"
+                id="nome"
+                formControlName="nome"
+                [class.is-invalid]="hasError('nome')"
+                placeholder="Ex: Vale Alimentacao">
+              @if (hasError('nome')) {
+                <div class="invalid-feedback">
+                  {{ getErrorMessage('nome') }}
+                </div>
+              }
+            </div>
+
+            <div class="mb-3">
+              <label for="descricao" class="form-label">Descricao</label>
+              <textarea
+                class="form-control"
+                id="descricao"
+                formControlName="descricao"
+                rows="3"
+                [class.is-invalid]="hasError('descricao')"
+                placeholder="Descricao do beneficio"></textarea>
+              @if (hasError('descricao')) {
+                <div class="invalid-feedback">
+                  {{ getErrorMessage('descricao') }}
+                </div>
+              }
+            </div>
+
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="valor" class="form-label">
+                  Valor <span class="text-danger">*</span>
+                </label>
+                <div class="input-group">
+                  <span class="input-group-text">R$</span>
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="valor"
+                    formControlName="valor"
+                    [class.is-invalid]="hasError('valor')"
+                    step="0.01"
+                    min="0"
+                    placeholder="0.00">
+                  @if (hasError('valor')) {
+                    <div class="invalid-feedback">
+                      {{ getErrorMessage('valor') }}
+                    </div>
+                  }
+                </div>
+              </div>
+
+              <div class="col-md-6 mb-3">
+                <label class="form-label">Status</label>
+                <div class="form-check form-switch mt-2">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    id="ativo"
+                    formControlName="ativo">
+                  <label class="form-check-label" for="ativo">
+                    @if (form.get('ativo')?.value) {
+                      <span class="badge bg-success">Ativo</span>
+                    } @else {
+                      <span class="badge bg-secondary">Inativo</span>
+                    }
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <div class="d-flex gap-2 justify-content-end mt-4">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                (click)="onCancel()"
+                [disabled]="loading()">
+                <i class="bi bi-x-lg me-2"></i>
+                Cancelar
+              </button>
+              <button
+                type="submit"
+                class="btn btn-primary"
+                [disabled]="loading()">
+                @if (loading()) {
+                  <span class="spinner-border spinner-border-sm me-2"></span>
+                  Salvando...
+                } @else {
+                  <i class="bi bi-check-lg me-2"></i>
+                  Salvar
+                }
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
